@@ -16,7 +16,6 @@ public class FileReader
     {
         //TODO: Create data structure of choice
         //Ex. List<Something> someList = new ArrayList<>();
-        List<Integer> grades = new ArrayList<>();
         HashSet<Student> students = new HashSet<>();
 
         //Try opening the file and making a scanner that goes through the file
