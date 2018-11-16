@@ -22,15 +22,14 @@ public class FileReader
         try (Scanner scanner = new Scanner(new File(filename))) 
         {
             //Iterate through all the lines in the text file
-            while (scanner.hasNext())
-            {
+            Student newStudent = null;
+            String newClass = "";
+
+            while (scanner.hasNext()) {
                 String line = scanner.nextLine();
                 System.out.println(line);
-                Student newStudent = null;
-                String newClass = "";
 
-                if (line.startsWith(">"))
-                {
+                if (line.startsWith(">")) {
                     //This line is the name of a student
                     String studentName = line.substring(1);
                     System.out.println("New student: " + studentName);
@@ -39,8 +38,7 @@ public class FileReader
                     newStudent = new Student(studentName);
                     students.add(newStudent);
                 }
-                else if (!line.matches("\\d+"))
-                {
+                else if (!line.matches("\\d+")) {
                     //This line is a new course
                     System.out.println("Course: " + line);
 
@@ -48,8 +46,7 @@ public class FileReader
                     newClass = line;
                     newStudent.addClass(newClass);
                 }
-                else
-                {
+                else {
                     //This line is a grade
                     int grade = Integer.parseInt(line);
 

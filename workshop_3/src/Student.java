@@ -16,9 +16,20 @@ public class Student {
     }
 
     public void addGrade(String myClass, int grade){
-        ArrayList<Integer> myGrades = gradesMap.getOrDefault(myClass,null);
-        myGrades.add(grade);
-        gradesMap.put(myClass,myGrades);
+        ArrayList<Integer> myGrades = new ArrayList<>();
+        if (this.gradesMap.get(myClass)==null){
+            myGrades.add(grade);
+
+        }
+        else{
+            myGrades = this.gradesMap.get(myClass);
+            myGrades.add(grade);
+        }
+        this.gradesMap.put(myClass,myGrades);
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public ArrayList<Integer> getGrades(String myClass){
@@ -27,5 +38,18 @@ public class Student {
 
     public Set<String> getClasses(){
         return gradesMap.keySet();
+    }
+
+    public int getMedianGrade(String myClass){
+        return Median.grade(this,myClass);
+    }
+
+    public int getAverageGrade(String myClass){
+        return Average.grade(this, myClass);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
